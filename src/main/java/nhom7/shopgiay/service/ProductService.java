@@ -52,12 +52,16 @@ public class ProductService {
 
 	private List<ProductDetailModel> productDetailModelList;
 
+	
+	//Lấy ra thư mục người dùng.
 	public String getUploadFileFolder() {
 		String path = System.getProperty("user.home");
 
 		return path.replace('\\', '/').concat("/shopgiay/images/");
 	}
-
+	
+	// Lấy ra tất cả danh mục
+	// Dùng trong khi thêm hoặc sửa sản phẩm, ...
 	public List<Category> getCategoriesByIds(long[] catIds) throws Exception {
 		Category cat;
 		List<Category> catList = new ArrayList<Category>();
@@ -69,12 +73,16 @@ public class ProductService {
 		return catList;
 	}
 
+	
+	//Thêm sản phẩm
 	public Product addProduct(AddUpdateProductModel productAdd) throws Exception {
 		Product p = new Product();
+		
 		if (!productAdd.getThumbnail().isEmpty()) {
 			String thumbnail = uploadService.upload(productAdd.getThumbnail());
 			p.setThumbnail(thumbnail);
 		}
+		
 		p.setName(productAdd.getName());
 		p.setCreated(new Date(System.currentTimeMillis()));
 		p.setPrice(productAdd.getPrice());
@@ -85,6 +93,7 @@ public class ProductService {
 		return productRep.save(p);
 	}
 
+	// Sửa sản phẩm
 	public Product updateProduct(AddUpdateProductModel productUpdate) throws Exception {
 		Product p;
 		
@@ -95,22 +104,26 @@ public class ProductService {
 			String thumbnail = uploadService.upload(productUpdate.getThumbnail());
 			p.setThumbnail(thumbnail);
 		}
+		
 		p.setName(productUpdate.getName());
-
 		p.setPrice(productUpdate.getPrice());
 		p.setSalePrice(productUpdate.getSalePrice());
 		p.setDescription(productUpdate.getDescription());
 		p.setCategories(getCategoriesByIds(productUpdate.getCategoryId()));
+		
 		return productRep.save(p);
 	}
 
 	// -------------------------------------------------------------
+	// Product Images service
 
+	// Lấy tát cả hình ảnh theo id sản phẩm
 	public List<ProductImage> getProductImages(long productId) throws Exception {
 		List<ProductImage> productImages = productImageRep.getByProductId(productId);
 		return productImages;
 	}
 
+	//Xu ly khi them hinh anh san pham
 	public void saveAddProductImages(AddProductImageModel pim) throws Exception {
 		System.out.println("p id: " + pim.getProductId());
 		Product product = productRep.findById(pim.getProductId()).get();
@@ -125,17 +138,16 @@ public class ProductService {
 		}
 	}
 
+	//Xóa hinh anh san pham
 	public void deleteProductImage(long id) throws Exception {
 		productImageRep.deleteById(id);
 	}
 
-	public void clearProductImage(long productId) throws Exception {
-		productImageRep.clearByProdudctId(productId);
-	}
 
-	// ----------------------------------
+	// ------------------------------------------------------------
+	//Product detail service
 
-	public List<ProductDetail> getProductDetailsByProductId(long idProduct) throws Exception {
+	public List<ProductDetail> getsByProductId(long idProduct) throws Exception {
 		return productDetailRep.getByProductId(idProduct);
 	}
 
@@ -144,9 +156,9 @@ public class ProductService {
 		productDetailModelList = new ArrayList<ProductDetailModel>();
 
 		// Lay ra tat ca san pham chi tiet cua san pham co id = idproduct
-		List<ProductDetail> productDetailList = this.getProductDetailsByProductId(idProduct);
-		System.out.println(productDetailList.size());
-		String imagePath = null;
+		List<ProductDetail> productDetailList = this.getsByProductId(idProduct);
+		
+		
 
 		for (ProductDetail productDetail : productDetailList) {
 
@@ -233,6 +245,12 @@ public class ProductService {
 					new StatusMessage(true, "ERROR: Chi tiết sản phẩm đã tồn tại. Bạn có thể câp nhật lại số lượng!"));
 		}
 
+	}
+	
+
+	//Xoa tat ca chi tiet san pham
+	public void clearProductDetails(long productId) throws Exception {
+		productDetailRep.clearByProductId(productId);
 	}
 
 	// update số lượng cho chi tiết sản phẩm

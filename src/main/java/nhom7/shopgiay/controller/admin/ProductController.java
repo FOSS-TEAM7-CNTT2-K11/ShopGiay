@@ -327,6 +327,7 @@ public class ProductController {
 		try {
 
 			productDetailRep.deleteById(id);
+			System.out.println("Xoa thanh cong product detail");
 			redAtt.addFlashAttribute("statusMessage", new StatusMessage(false, "Xóa thành công!"));
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -341,7 +342,7 @@ public class ProductController {
 	@PostMapping(value = "/detail/clear")
 	public String postClearProductDetail(@RequestParam long productId, RedirectAttributes redAtt) {
 		try {
-			productService.clearProductImage(productId);
+			productService.clearProductDetails(productId);
 			redAtt.addFlashAttribute("statusMessage", new StatusMessage(false, "Xóa tất cả thành công!"));
 		} catch (Exception e) {
 			e.printStackTrace();

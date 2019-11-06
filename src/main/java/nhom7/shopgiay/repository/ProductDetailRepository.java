@@ -3,6 +3,7 @@ package nhom7.shopgiay.repository;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
@@ -17,4 +18,7 @@ public interface ProductDetailRepository extends JpaRepository<ProductDetail, Lo
 	@Query(value = "select pd from ProductDetail pd where pd.product.id=:id")
 	public List<ProductDetail> getByProductId(@Param("id") long id);
 	
+	@Query(nativeQuery = true,  value = "delete i from product_detail as i where i.product_id=:productId")
+	@Modifying
+	void clearByProductId(@Param("productId") long id);
 }
