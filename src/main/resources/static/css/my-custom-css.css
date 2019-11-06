@@ -1,0 +1,112 @@
+td img{
+	height: 70px;
+	width: 100px;
+	object-fit: cover;
+	object-position: center;
+}
+
+#slideShow{
+		width: 80%;
+	
+	margin: auto;
+}
+
+#slideShow img{
+	object-fit: cover;
+	object-position: center;
+	height: 500px;
+	width: 100%;
+}
+
+#slideShow ul li{
+	background: white;
+}
+#slideShow a {
+}
+#slideShow a span{
+	
+}
+
+
+
+.image-list{
+	width: 100%;
+	overflow-y: scroll;
+	text-align: center;
+	max-height: 70px;
+}
+
+.image-list img{
+	width: 70px;
+	height: 50px;
+	object-fit: cover;
+	object-position: center;
+	
+}
+#myImg {
+	position: relative;
+}
+
+
+#delImg {
+	position: absolute;
+	right: 5px;
+	top: -15px;
+	padding: 0;
+	margin: 0;
+	color: red;
+	font-size: 15px;
+	font-weight: bold;
+}
+
+.myli{
+	
+}
+
+.clear{
+	clear: both;
+}
+
+a{
+	text-decoration: none;
+}
+a:hover{
+	text-decoration: none;
+}
+
+
+
+.each-checkbox-div{
+	height: 30px;
+	line-height: 30px;
+	width: 100%;
+}
+
+.my-checkbox{
+	display: inline-block;
+	width: 25px;
+	height: 25px;
+	background: #6b696e;
+	border-radius: 100%;
+	position: relative;
+	top: 22%;
+	box-shadow: 0px 1px 3px rgba(0, 0, 0, 0, 0.5);
+}
+
+.my-checkbox label {
+	display: block;
+	width: 15px;
+	height: 15px;
+	border-radius: 100%;
+	transition: all 0.2s ease;
+	cursor: pointer;
+	position: absolute;
+	top: 5px;
+	left: 5px;
+	z-index: 1;
+	background: white;
+	
+	box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+
