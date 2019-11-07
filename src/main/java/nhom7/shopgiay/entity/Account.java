@@ -34,6 +34,17 @@ public class Account implements Serializable {
 
 	private String username;
 
+	@OneToMany(mappedBy = "product")
+	private List<Wish> wishes;
+	
+	public List<Wish> getWishes() {
+		return wishes;
+	}
+
+	public void setWishes(List<Wish> wishes) {
+		this.wishes = wishes;
+	}
+
 	public long getId() {
 		return id;
 	}

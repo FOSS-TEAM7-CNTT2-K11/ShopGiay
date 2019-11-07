@@ -11,16 +11,10 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,N
 -- -----------------------------------------------------
 -- Schema mydb
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `mydb` DEFAULT CHARACTER SET utf8 ;
--- -----------------------------------------------------
--- Schema shopgiay
--- -----------------------------------------------------
 
 -- -----------------------------------------------------
--- Schema shopgiay
--- -----------------------------------------------------
 CREATE SCHEMA IF NOT EXISTS `shopgiay` DEFAULT CHARACTER SET utf8 ;
-USE `mydb` ;
+USE `shopgiay` ;
 
 -- -----------------------------------------------------
 -- Table `shopgiay`.`account`
@@ -31,7 +25,7 @@ CREATE TABLE IF NOT EXISTS `shopgiay`.`account` (
   `password` VARCHAR(60) NOT NULL,
   `created` DATETIME NOT NULL,
   `admin` TINYINT(1) NOT NULL DEFAULT '0',
-  `phone` VARCHAR(10) NULL DEFAULT NULL,
+  `phone` VARCHAR(10) not NULL,
   `address` VARCHAR(255) CHARACTER SET 'utf8' NULL DEFAULT NULL,
   `email` VARCHAR(32) NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
@@ -62,10 +56,13 @@ DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`comment`
+-- Table `shopgiay`.`comment`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`comment` (
+use shopgiay;
+
+CREATE TABLE IF NOT EXISTS `shopgiay`.`comment` (
   `id` INT NOT NULL AUTO_INCREMENT,
+  `comment_parent_id` int not null default 0,
   `content` NVARCHAR(255) NOT NULL,
   `created` DATETIME NOT NULL,
   `account_id` INT(11) NOT NULL,
@@ -90,7 +87,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `mydb`.`rate`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`rate` (
+CREATE TABLE IF NOT EXISTS `shopgiay`.`rate` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `value` INT(1) NOT NULL,
   `account_id` INT(11) NOT NULL,

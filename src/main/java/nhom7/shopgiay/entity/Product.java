@@ -70,6 +70,16 @@ public class Product implements Serializable {
 					@JoinColumn(name = "category_id", referencedColumnName = "id") })
 	private List<Category> categories;
 	
+	@OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
+	private List<Comment> comments;
+	
+	public List<Comment> getComments() {
+		return comments;
+	}
+
+	public void setComments(List<Comment> comments) {
+		this.comments = comments;
+	}
 
 	public Product() {
 		
