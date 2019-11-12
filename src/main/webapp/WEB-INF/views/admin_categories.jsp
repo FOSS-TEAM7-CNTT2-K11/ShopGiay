@@ -114,7 +114,7 @@
 
 											</td>
 											<td>
-												<a class="btn btn-warning">Sửa</a>
+												<a class="btn btn-warning" href="${pageContext.request.contextPath }/admin/categories/update?catId=${c.id}">Sửa</a>
 											</td>
 										</tr>
 									</c:forEach>
@@ -122,8 +122,7 @@
 							</table>
 						</div>
 					</div>
-					<div class="card-footer small text-muted">Updated yesterday
-						at 11:59 PM</div>
+					
 				</div>
 
 			</div>

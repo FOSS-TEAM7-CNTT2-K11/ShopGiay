@@ -21,7 +21,7 @@
 						<th>Thumbnail</th>
 						<th>Màu</th>
 						<th>Size</th>
-						<th>Số lượng</th>
+						<th>Số lượng còn</th>
 						<th>
 							<form method="post"
 								action="${pageContext.request.contextPath }/admin/product/detail/clear">
@@ -41,7 +41,7 @@
 						<th>Thumbnail</th>
 						<th>Màu</th>
 						<th>Size</th>
-						<th>Số lượng</th>
+						<th>Số lượng còn</th>
 						<th>
 							<form method="post"
 								action="${pageContext.request.contextPath }/admin/product/detail/clear">

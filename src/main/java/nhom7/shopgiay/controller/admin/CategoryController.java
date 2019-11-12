@@ -63,4 +63,34 @@ public class CategoryController {
 		}
 		return "redirect:/admin/categories";
 	}
+
+	@GetMapping(value = "/update")
+	public String getUpdateCat(Model model, @RequestParam long catId, RedirectAttributes redAtt) {
+		try {
+			Category cat = categoryRepository.findById(catId).get();
+			model.addAttribute("cat", cat);
+			return "admin_update-category";
+		} catch (Exception e) {
+			redAtt.addFlashAttribute("statusMessage",
+					new StatusMessage(true, "Danh mục không tồn tại. Vui lòng thử lại!"));
+			return "redirect:/admin/categories";
+		}
+	}
+
+	@PostMapping("/update")
+	public String postUpdateCat(Model model, @RequestParam long id, @RequestParam String name,
+			RedirectAttributes redAtt) {
+		try {
+			Category cat = categoryRepository.findById(id).get();
+			cat.setName(name);
+			categoryRepository.save(cat);
+			redAtt.addFlashAttribute("statusMessage", new StatusMessage(false, "Sửa danh mục thành công."));
+
+		} catch (Exception e) {
+			redAtt.addFlashAttribute("statusMessage",
+					new StatusMessage(true, "Danh mục không tồn tại. Vui lòng thử lại!"));
+
+		}
+		return "redirect:/admin/categories";
+	}
 }
