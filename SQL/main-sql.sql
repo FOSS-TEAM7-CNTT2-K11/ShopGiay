@@ -29,9 +29,9 @@ CREATE TABLE IF NOT EXISTS `shopgiay`.`account` (
   `address` VARCHAR(255) CHARACTER SET 'utf8' NULL DEFAULT NULL,
   `email` VARCHAR(32) NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE INDEX `username_UNIQUE` (`username` ASC) VISIBLE,
-  UNIQUE INDEX `phone_UNIQUE` (`phone` ASC) VISIBLE,
-  UNIQUE INDEX `email_UNIQUE` (`email` ASC) VISIBLE)
+  UNIQUE INDEX `username_UNIQUE` (`username` ASC) ,
+  UNIQUE INDEX `phone_UNIQUE` (`phone` ASC) ,
+  UNIQUE INDEX `email_UNIQUE` (`email` ASC) )
 ENGINE = InnoDB
 AUTO_INCREMENT = 628
 DEFAULT CHARACTER SET = utf8;
@@ -49,7 +49,7 @@ CREATE TABLE IF NOT EXISTS `shopgiay`.`product` (
   `created` DATETIME NOT NULL,
   `description` MEDIUMTEXT NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE INDEX `name_UNIQUE` (`name` ASC) VISIBLE)
+  UNIQUE INDEX `name_UNIQUE` (`name` ASC) )
 ENGINE = InnoDB
 AUTO_INCREMENT = 34
 DEFAULT CHARACTER SET = utf8;
@@ -68,9 +68,9 @@ CREATE TABLE IF NOT EXISTS `shopgiay`.`comment` (
   `account_id` INT(11) NOT NULL,
   `product_id` INT(11) NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE,
-  INDEX `fk_comment_account_idx` (`account_id` ASC) VISIBLE,
-  INDEX `fk_comment_product1_idx` (`product_id` ASC) VISIBLE,
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC) ,
+  INDEX `fk_comment_account_idx` (`account_id` ASC) ,
+  INDEX `fk_comment_product1_idx` (`product_id` ASC) ,
   CONSTRAINT `fk_comment_account`
     FOREIGN KEY (`account_id`)
     REFERENCES `shopgiay`.`account` (`id`)
@@ -93,9 +93,9 @@ CREATE TABLE IF NOT EXISTS `shopgiay`.`rate` (
   `account_id` INT(11) NOT NULL,
   `product_id` INT(11) NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE,
-  INDEX `fk_rate_account1_idx` (`account_id` ASC) VISIBLE,
-  INDEX `fk_rate_product1_idx` (`product_id` ASC) VISIBLE,
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC) ,
+  INDEX `fk_rate_account1_idx` (`account_id` ASC) ,
+  INDEX `fk_rate_product1_idx` (`product_id` ASC) ,
   CONSTRAINT `fk_rate_account1`
     FOREIGN KEY (`account_id`)
     REFERENCES `shopgiay`.`account` (`id`)
@@ -122,7 +122,7 @@ CREATE TABLE IF NOT EXISTS `shopgiay`.`checkout` (
   `type` INT(11) NOT NULL,
   `deny` VARCHAR(45) NULL,
   PRIMARY KEY (`id`),
-  INDEX `fk_checkout_account1_idx` (`account_id` ASC) VISIBLE,
+  INDEX `fk_checkout_account1_idx` (`account_id` ASC) ,
   CONSTRAINT `fk_checkout_account1`
     FOREIGN KEY (`account_id`)
     REFERENCES `shopgiay`.`account` (`id`))
@@ -139,7 +139,7 @@ CREATE TABLE IF NOT EXISTS `shopgiay`.`color` (
   `color` VARCHAR(45) NOT NULL,
   `description` VARCHAR(200) NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE INDEX `color_UNIQUE` (`color` ASC) VISIBLE)
+  UNIQUE INDEX `color_UNIQUE` (`color` ASC) )
 ENGINE = InnoDB
 AUTO_INCREMENT = 43
 DEFAULT CHARACTER SET = utf8;
@@ -153,7 +153,7 @@ CREATE TABLE IF NOT EXISTS `shopgiay`.`size` (
   `size` VARCHAR(30) NOT NULL,
   `description` VARCHAR(200) NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE INDEX `size_UNIQUE` (`size` ASC) VISIBLE)
+  UNIQUE INDEX `size_UNIQUE` (`size` ASC) )
 ENGINE = InnoDB
 AUTO_INCREMENT = 27
 DEFAULT CHARACTER SET = utf8;
@@ -169,9 +169,9 @@ CREATE TABLE IF NOT EXISTS `shopgiay`.`product_detail` (
   `size_id` INT(11) NOT NULL,
   `product_id` INT(11) NOT NULL,
   PRIMARY KEY (`id`, `color_id`, `size_id`, `product_id`),
-  INDEX `fk_product_detail_color1_idx` (`color_id` ASC) VISIBLE,
-  INDEX `fk_product_detail_size1_idx` (`size_id` ASC) VISIBLE,
-  INDEX `fk_product_detail_product1_idx` (`product_id` ASC) VISIBLE,
+  INDEX `fk_product_detail_color1_idx` (`color_id` ASC) ,
+  INDEX `fk_product_detail_size1_idx` (`size_id` ASC) ,
+  INDEX `fk_product_detail_product1_idx` (`product_id` ASC) ,
   CONSTRAINT `fk_product_detail_color1`
     FOREIGN KEY (`color_id`)
     REFERENCES `shopgiay`.`color` (`id`),
@@ -197,9 +197,9 @@ CREATE TABLE IF NOT EXISTS `shopgiay`.`cart_item` (
   `show` TINYINT(1) NOT NULL DEFAULT '1',
   `checkout_id` INT(11) NOT NULL,
   PRIMARY KEY (`id`, `product_detail_id`, `account_id`),
-  INDEX `fk_cart_item_product_detail1_idx` (`product_detail_id` ASC) VISIBLE,
-  INDEX `fk_cart_item_account1_idx` (`account_id` ASC) VISIBLE,
-  INDEX `fk_cart_item_checkout1_idx` (`checkout_id` ASC) VISIBLE,
+  INDEX `fk_cart_item_product_detail1_idx` (`product_detail_id` ASC) ,
+  INDEX `fk_cart_item_account1_idx` (`account_id` ASC) ,
+  INDEX `fk_cart_item_checkout1_idx` (`checkout_id` ASC) ,
   CONSTRAINT `fk_cart_item_account1`
     FOREIGN KEY (`account_id`)
     REFERENCES `shopgiay`.`account` (`id`),
@@ -223,7 +223,7 @@ CREATE TABLE IF NOT EXISTS `shopgiay`.`category` (
   `created` DATETIME NOT NULL,
   `image` VARCHAR(100) NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE INDEX `name_UNIQUE` (`name` ASC) VISIBLE)
+  UNIQUE INDEX `name_UNIQUE` (`name` ASC) )
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
 
@@ -235,8 +235,8 @@ CREATE TABLE IF NOT EXISTS `shopgiay`.`product_has_category` (
   `product_id` INT(11) NOT NULL,
   `category_id` INT(11) NOT NULL,
   PRIMARY KEY (`product_id`, `category_id`),
-  INDEX `fk_product_has_category_category1_idx` (`category_id` ASC) VISIBLE,
-  INDEX `fk_product_has_category_product1_idx` (`product_id` ASC) VISIBLE,
+  INDEX `fk_product_has_category_category1_idx` (`category_id` ASC) ,
+  INDEX `fk_product_has_category_product1_idx` (`product_id` ASC) ,
   CONSTRAINT `fk_product_has_category_category1`
     FOREIGN KEY (`category_id`)
     REFERENCES `shopgiay`.`category` (`id`),
@@ -255,7 +255,7 @@ CREATE TABLE IF NOT EXISTS `shopgiay`.`product_image` (
   `image` VARCHAR(100) NOT NULL,
   `product_id` INT(11) NOT NULL,
   PRIMARY KEY (`id`),
-  INDEX `fk_product_image_product1_idx` (`product_id` ASC) VISIBLE,
+  INDEX `fk_product_image_product1_idx` (`product_id` ASC) ,
   CONSTRAINT `fk_product_image_product1`
     FOREIGN KEY (`product_id`)
     REFERENCES `shopgiay`.`product` (`id`))
@@ -271,8 +271,8 @@ CREATE TABLE IF NOT EXISTS `shopgiay`.`wish` (
   `account_id` INT(11) NOT NULL,
   `product_id` INT(11) NOT NULL,
   PRIMARY KEY (`account_id`, `product_id`),
-  INDEX `fk_account_has_product_product1_idx` (`product_id` ASC) VISIBLE,
-  INDEX `fk_account_has_product_account1_idx` (`account_id` ASC) VISIBLE,
+  INDEX `fk_account_has_product_product1_idx` (`product_id` ASC) ,
+  INDEX `fk_account_has_product_account1_idx` (`account_id` ASC) ,
   CONSTRAINT `fk_account_has_product_account1`
     FOREIGN KEY (`account_id`)
     REFERENCES `shopgiay`.`account` (`id`),

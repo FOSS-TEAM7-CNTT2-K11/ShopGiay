@@ -1,12 +1,18 @@
 package nhom7.shopgiay.entity;
 
 import java.io.Serializable;
-import javax.persistence.*;
-
-import com.sun.org.apache.xpath.internal.operations.Equals;
-
 import java.util.Date;
 import java.util.List;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  * The persistent class for the category database table.
