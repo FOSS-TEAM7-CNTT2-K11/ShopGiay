@@ -39,16 +39,16 @@ public class JpaConfiguration {
 	@Bean
 	public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
 		LocalContainerEntityManagerFactoryBean emf = new LocalContainerEntityManagerFactoryBean();
-		System.out.println("Da vao day");
+		
 		emf.setDataSource(dataSource());
 		emf.setPackagesToScan("nhom7.shopgiay.entity");
 		emf.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
 		emf.setJpaDialect(new HibernateJpaDialect());
-		System.out.println("Da vao day 2");
+		
 		Properties prop = new Properties();
 		prop.put("hibernate.show_sql", true);
 		emf.setJpaProperties(prop);
-		System.out.println("Da vao day 3");
+		
 		return emf;
 	}
 

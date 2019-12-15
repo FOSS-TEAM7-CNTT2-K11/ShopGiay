@@ -120,7 +120,6 @@ CREATE TABLE IF NOT EXISTS `shopgiay`.`checkout` (
   `status` INT(11) NOT NULL DEFAULT '0',
   `account_id` INT(11) NOT NULL,
   `type` INT(11) NOT NULL,
-  `deny` VARCHAR(45) NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_checkout_account1_idx` (`account_id` ASC) ,
   CONSTRAINT `fk_checkout_account1`

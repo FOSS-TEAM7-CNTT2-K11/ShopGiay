@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
@@ -18,12 +19,12 @@ public class Wish implements Serializable {
 	@EmbeddedId
 	private WishPK id;
 
-	@ManyToOne
-	@JoinColumn(name = "account_id", insertable = false, updatable = false)
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "account_id", nullable = false,  insertable = false, updatable = false)
 	private Account account;
 
-	@ManyToOne
-	@JoinColumn(name = "product_id", insertable = false, updatable = false)
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "product_id", nullable = false,  insertable = false, updatable = false)
 	private Product product;
 
 	public Account getAccount() {
@@ -44,6 +45,14 @@ public class Wish implements Serializable {
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
+	}
+
+	public WishPK getId() {
+		return id;
+	}
+
+	public void setId(WishPK id) {
+		this.id = id;
 	}
 
 }

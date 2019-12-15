@@ -14,6 +14,8 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 /**
  * The persistent class for the product_detail database table.
  * 
@@ -29,6 +31,7 @@ public class ProductDetail implements Serializable {
 	private long id;
 	private int amount;
 
+	@JsonIgnore
 	// bi-directional many-to-one association to CartItem
 	@OneToMany(mappedBy = "productDetail", fetch = FetchType.LAZY)
 	private List<CartItem> cartItems;

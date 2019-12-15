@@ -6,4 +6,5 @@ encoding//src/main/webapp/WEB-INF/layouts/client_slider.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/layouts/client_slogan.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/views/admin_products.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/views/admin_view-user.jsp=UTF-8
-encoding/<project>=UTF-8
+encoding//src/main/webapp/WEB-INF/views/client_contact.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/client_user-history.jsp=UTF-8

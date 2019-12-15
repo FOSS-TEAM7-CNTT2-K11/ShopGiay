@@ -1,12 +1,14 @@
 package nhom7.shopgiay.entity;
 
 import java.io.Serializable;
+import java.text.NumberFormat;
 import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -40,7 +42,6 @@ public class Product implements Serializable {
 	private String description;
 	private String name;
 
-	
 	private int price;
 
 	@Column(name = "sale_price")
@@ -49,7 +50,7 @@ public class Product implements Serializable {
 	private String thumbnail;
 
 	// bi-directional many-to-one association to ProductDetail
-	@OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "product", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private List<ProductDetail> productDetails;
 
 	// bi-directional many-to-one association to ProductImage
@@ -69,10 +70,11 @@ public class Product implements Serializable {
 			@JoinColumn(name = "product_id", referencedColumnName = "id") }, inverseJoinColumns = {
 					@JoinColumn(name = "category_id", referencedColumnName = "id") })
 	private List<Category> categories;
-	
-	@OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
+
+	@OneToMany(mappedBy = "product", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<Comment> comments;
-	
+
+
 	public List<Comment> getComments() {
 		return comments;
 	}
@@ -199,6 +201,18 @@ public class Product implements Serializable {
 
 	public void setCategories(List<Category> categories) {
 		this.categories = categories;
+	}
+
+	public String getRealPrice() {
+		NumberFormat myFormat = NumberFormat.getInstance();
+		myFormat.setGroupingUsed(true);
+		return myFormat.format((int) price * (100 - salePrice) / 100);
+	}
+	
+	public String getPriceWithFormat() {
+		NumberFormat myFormat = NumberFormat.getInstance();
+		myFormat.setGroupingUsed(true);
+		return myFormat.format(price);
 	}
 
 }

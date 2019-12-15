@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -113,6 +114,13 @@ public class ProductService {
 		
 		return productRep.save(p);
 	}
+	
+	// get newest san pham
+	public List<Product> getNewestProduct(PageRequest pr) throws Exception{
+		return productRep.getNewestProduct(pr);
+	}
+	
+	
 
 	// -------------------------------------------------------------
 	// Product Images service
@@ -291,4 +299,7 @@ public class ProductService {
 		return true;
 	}
 
+	public ProductDetail getProductDetailByColorAndSize(Size size, Color color, long productId) {
+		return productDetailRep.getByColorAndSizeAndProductId(size, color, productId);
+	}
 }

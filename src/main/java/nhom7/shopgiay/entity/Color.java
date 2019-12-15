@@ -2,6 +2,9 @@ package nhom7.shopgiay.entity;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.List;
 
 /**
@@ -21,6 +24,7 @@ public class Color implements Serializable {
 
 	private String description;
 
+	@JsonIgnore
 	// bi-directional many-to-one association to ProductDetail
 	@OneToMany(mappedBy = "color")
 	private List<ProductDetail> productDetails;

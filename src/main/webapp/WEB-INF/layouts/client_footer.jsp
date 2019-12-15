@@ -51,7 +51,7 @@
 						<li class="time">Mở cửa 6:00 - 22:00 hàng ngày</li>
 						<li class="address">Minh Khai Bắc Từ Liêm Hà Nội</li>
 						<li class="phone"><a>Hotline: 0123456789</a></li>
-						<li class="email">shopgiay@gmail.com</li>
+						<li class="email">zuuzushoe@gmail.com</li>
 					</ul>
 				</div>
 

@@ -2,6 +2,9 @@ package nhom7.shopgiay.entity;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.Date;
 import java.util.List;
 
@@ -27,6 +30,7 @@ public class Checkout implements Serializable {
 
 	private int type;
 
+	@JsonIgnore
 	// bi-directional many-to-one association to CartItem
 	@OneToMany(mappedBy = "checkout")
 	private List<CartItem> cartItems;

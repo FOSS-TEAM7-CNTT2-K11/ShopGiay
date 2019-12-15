@@ -23,6 +23,9 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath }/static/_client/css/aos.css">
 
     <link rel="stylesheet" href="${pageContext.request.contextPath }/static/_client/css/style.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/static/_client/css/my-css.css">
+    <script type="text/javascript" src="${pageContext.request.contextPath }/static/_client/js/angular.min.js"></script>
+    <script type="text/javascript"src="${pageContext.request.contextPath }/static/_client/js/my-angular.js"></script>
     
   </head>
   <body style="font-family: arial;">
@@ -51,6 +54,7 @@
   <script src="${pageContext.request.contextPath }/static/_client/js/aos.js"></script>
 
   <script src="${pageContext.request.contextPath }/static/_client/js/main.js"></script>
+  <script src="${pageContext.request.contextPath }/static/_client/js/my-js.js"></script>
     
   </body>
 </html>

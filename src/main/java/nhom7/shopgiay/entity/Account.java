@@ -2,6 +2,12 @@ package nhom7.shopgiay.entity;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import javax.transaction.TransactionScoped;
+
+import org.springframework.transaction.annotation.Transactional;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.Date;
 import java.util.List;
 
@@ -34,6 +40,7 @@ public class Account implements Serializable {
 
 	private String username;
 
+	@JsonIgnore
 	@OneToMany(mappedBy = "product")
 	private List<Wish> wishes;
 	
@@ -53,14 +60,17 @@ public class Account implements Serializable {
 		this.id = id;
 	}
 
+	@JsonIgnore
 	// bi-directional many-to-one association to Checkout
 	@OneToMany(mappedBy = "account")
 	private List<Checkout> checkouts;
 
+	@JsonIgnore
 	// bi-directional many-to-one association to CartItem
 	@OneToMany(mappedBy = "account")
 	private List<CartItem> cartItems;
 
+	@JsonIgnore
 	// bi-directional many-to-many association to Product
 	@ManyToMany(mappedBy = "accounts")
 	private List<Product> products;

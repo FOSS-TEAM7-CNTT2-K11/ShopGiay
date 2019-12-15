@@ -1,0 +1,24 @@
+INSERT INTO `shopgiay`.`size` (`id`, `size`) VALUES ('1', '38');
+INSERT INTO `shopgiay`.`size` (`id`, `size`) VALUES ('2', '39');
+INSERT INTO `shopgiay`.`size` (`id`, `size`) VALUES ('3', '40');
+INSERT INTO `shopgiay`.`size` (`id`, `size`) VALUES ('4', '41');
+INSERT INTO `shopgiay`.`size` (`id`, `size`) VALUES ('5', '42');
+INSERT INTO `shopgiay`.`size` (`id`, `size`) VALUES ('6', '43');
+INSERT INTO `shopgiay`.`size` (`id`, `size`) VALUES ('7', '44');
+INSERT INTO `shopgiay`.`size` (`id`, `size`) VALUES ('8', '36');
+INSERT INTO `shopgiay`.`size` (`id`, `size`) VALUES ('9', '37');
+INSERT INTO `shopgiay`.`size` (`id`, `size`) VALUES ('10', '35');
+INSERT INTO `shopgiay`.`size` (`id`, `size`) VALUES ('11', '34');
+INSERT INTO `shopgiay`.`size` (`id`, `size`) VALUES ('12', '33');
+INSERT INTO `shopgiay`.`size` (`id`, `size`) VALUES ('13', '32');
+INSERT INTO `shopgiay`.`size` (`id`, `size`) VALUES ('14', '31');
+INSERT INTO `shopgiay`.`size` (`id`, `size`) VALUES ('15', '30');
+INSERT INTO `shopgiay`.`size` (`id`, `size`) VALUES ('16', '29');
+INSERT INTO `shopgiay`.`size` (`id`, `size`) VALUES ('17', '28');
+INSERT INTO `shopgiay`.`size` (`id`, `size`) VALUES ('18', '27');
+INSERT INTO `shopgiay`.`size` (`id`, `size`) VALUES ('19', '26');
+INSERT INTO `shopgiay`.`size` (`id`, `size`) VALUES ('20', '25');
+INSERT INTO `shopgiay`.`size` (`id`, `size`) VALUES ('21', '24');
+INSERT INTO `shopgiay`.`size` (`id`, `size`) VALUES ('22', '23');
+INSERT INTO `shopgiay`.`size` (`id`, `size`) VALUES ('23', '22');
+

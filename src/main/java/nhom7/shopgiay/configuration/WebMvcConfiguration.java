@@ -1,20 +1,27 @@
 package nhom7.shopgiay.configuration;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.multipart.MultipartResolver;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
+import nhom7.shopgiay.controller.interceptor.HeaderInterceptor;
 
 @Configuration
 @EnableWebMvc
 @ComponentScan(basePackages = { "nhom7.shopgiay" })
 public class WebMvcConfiguration implements WebMvcConfigurer {
 
+	@Autowired
+	HeaderInterceptor headerInterceptor;
+	
 	@Override
 	public void configureViewResolvers(ViewResolverRegistry registry) {
 		registry.jsp("/WEB-INF/views/", ".jsp");
@@ -36,5 +43,10 @@ public class WebMvcConfiguration implements WebMvcConfigurer {
 		mrs.setMaxUploadSize(1024 * 1024 * 30);
 
 		return mrs;
+	}
+	
+	@Override
+	public void addInterceptors(InterceptorRegistry registry) {
+		registry.addInterceptor(headerInterceptor).addPathPatterns("/**").excludePathPatterns("/admin/**");
 	}
 }

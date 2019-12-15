@@ -16,11 +16,14 @@ public interface CartItemRepository extends JpaRepository<CartItem, Long> {
 
 	@Query(value = "select ci from CartItem ci where ci.checkout.id = :checkoutId and show = true")
 	public List<CartItem> getWaitingItemsByCheckoutId(@Param("checkoutId") long checkoutId);
-	
+
 	@Query(value = "select ci from CartItem ci where ci.account.id = :accountId")
 	public List<CartItem> getByAccountId(@Param("accountId") long accountId);
+
+	@Query(value = "select ci from CartItem ci where ci.checkout.id = :checkoutId")
+	public List<CartItem> getsByCheckoutId(@Param("checkoutId") long checkoutId);
 	
-	@Query(value = "select c from CartItem c where c.account.id = :id")
-	List<CartItem> getListCart(@Param("id") long id);
+	@Query(value = "select ci from CartItem ci where ci.account.id = :accountId and ci.show=true and ci.checkout = null")
+	List<CartItem> getWaitingItemsByAccountId(@Param("accountId") long accountId);
 
 }

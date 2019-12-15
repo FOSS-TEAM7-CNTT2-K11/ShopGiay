@@ -15,9 +15,9 @@
 <jsp:include page="/WEB-INF/layouts/client_category-by-gender.jsp"></jsp:include>
 <!-- end category -->
 
-<!-- featured product -->
-<jsp:include page="/WEB-INF/layouts/client_featured-product.jsp"></jsp:include>
-<!-- end featured product -->
+<!-- new product -->
+<jsp:include page="/WEB-INF/layouts/client_new-product.jsp"></jsp:include>
+<!-- end new product -->
 
 <!-- big sale -->
 <jsp:include page="/WEB-INF/layouts/client_big-sale.jsp"></jsp:include>
